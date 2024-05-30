@@ -4,10 +4,22 @@ import React, { useEffect, useState } from "react";
 import ProductList from "../components/ProductList"
 import ProductModal from "../components/ProductModal"
 
+interface Product {
+  id: number;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+    rate: number;
+    count: number;
+  };
+}
 
 export default function Home() {
-const [products, setProducts] = useState([])
-const [selectedProduct, setSelectedProduct] = useState(null)
+const [products, setProducts] = useState<Product[]>([])
+const [selectedProduct, setSelectedProduct] = useState<Product | null>(null)
 const [searchTerm, setSearchTerm] = useState("")
 
 useEffect(() => {
